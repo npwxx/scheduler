@@ -8,7 +8,6 @@ export default function DayListItem(props) {
     "day-list__item--selected": selected,
     "day-list__item--full": spots === 0,
   });
-  console.log("here");
 
   const handleClick = () => {
     if (setDay) {
@@ -20,7 +19,7 @@ export default function DayListItem(props) {
     <li onClick={handleClick} className={dayClass}>
       <h2 className="text--regular">{name}</h2>
       <h3 className="text--light">
-        {spots} spot{spots > 1 && "s"} remaining
+        {spots || "no"} spot{spots !== 1 && "s"} remaining
       </h3>
     </li>
   );
