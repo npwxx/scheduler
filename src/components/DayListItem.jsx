@@ -11,7 +11,7 @@ export default function DayListItem(props) {
 
   const handleClick = () => {
     if (setDay) {
-      setDay(name);
+      setDay();
     }
   };
 
