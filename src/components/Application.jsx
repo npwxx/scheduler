@@ -29,8 +29,9 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment,
     };
-    Axios.put(`/api/appointments/${id}`, appointment);
-    setState({ ...state, appointments });
+    return Axios.put(`/api/appointments/${id}`, appointment).then(() => {
+      setState({ ...state, appointments });
+    });
   }
 
   const schedule = dailyAppointments.map((appointment) => {
