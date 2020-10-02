@@ -34,6 +34,20 @@ export default function Application(props) {
     });
   }
 
+  function deleteInterview(id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    return Axios.delete(`/api/appointments/${id}`).then(() => {
+      setState({ ...state, appointments });
+    });
+  }
+
   const schedule = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
     return (
@@ -44,6 +58,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={dailyInterviewers}
         bookInterview={bookInterview}
+        deleteInterview={deleteInterview}
       />
     );
   });
