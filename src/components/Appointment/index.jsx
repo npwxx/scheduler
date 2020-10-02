@@ -15,6 +15,8 @@ const SAVING = "SAVING";
 const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const EDIT = "EDIT";
+// const ERROR_SAVE = "ERROR_SAVE";
+// const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
   const {
@@ -36,6 +38,10 @@ export default function Appointment(props) {
     bookInterview(id, interview).then(() => {
       transition(SHOW);
     });
+    // .catch(() => {
+    //   console.log("this");
+    //   transition(ERROR_SAVE);
+    // });
   }
 
   function remove() {
@@ -43,6 +49,9 @@ export default function Appointment(props) {
     deleteInterview(id).then(() => {
       transition(EMPTY);
     });
+    // .catch(() => {
+    //   transition(ERROR_DELETE);
+    // });
   }
 
   return (
@@ -78,6 +87,7 @@ export default function Appointment(props) {
           onCancel={back}
         />
       )}
+      {/* {mode === ERROR_DELETE && } */}
     </article>
   );
 }
