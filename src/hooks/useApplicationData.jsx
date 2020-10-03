@@ -8,6 +8,7 @@ export default function useApplicationData() {
   const SET_DAYS = "SET_DAYS";
 
   const reducer = function (state, action) {
+    // console.log(state, action);
     const actionHandlers = {
       [SET_DAY]: () => {
         const { day } = action;
@@ -30,7 +31,7 @@ export default function useApplicationData() {
         const { id, interview } = action;
         const appointment = {
           ...state.appointments[id],
-          interview: { ...interview },
+          interview,
         };
         const appointments = {
           ...state.appointments,
@@ -68,8 +69,8 @@ export default function useApplicationData() {
         return Axios.get("/api/days");
       })
       .then((response) => {
-        // setState({ ...state, appointments, days: response.data });
         dispatch({ type: SET_INTERVIEW, id, interview });
+        dispatch({ type: SET_DAYS, days: response.data });
       });
   };
 
@@ -79,8 +80,8 @@ export default function useApplicationData() {
         return Axios.get("/api/days");
       })
       .then((response) => {
-        // setState({ ...state, appointments, days: response.data });
         dispatch({ type: SET_INTERVIEW, id, interview: null });
+        dispatch({ type: SET_DAYS, days: response.data });
       });
   };
 
