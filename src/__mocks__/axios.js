@@ -53,9 +53,20 @@ const fixtures = {
   },
 };
 
+const updateSpotsRemaining = function () {
+  for (const day of fixtures.days) {
+    let spots = 0;
+    for (const appointmentId of day.appointments) {
+      if (fixtures.appointments[appointmentId].interview === null) {
+        spots++;
+      }
+    }
+    day.spots = spots;
+  }
+};
+
 export default {
   get: jest.fn((url) => {
-    console.log(url);
     if (url === "/api/days") {
       return Promise.resolve({
         status: 200,
@@ -79,6 +90,22 @@ export default {
         status: 200,
         statusText: "OK",
         data: fixtures.interviewers,
+      });
+    }
+  }),
+
+  put: jest.fn((url, body) => {
+    const match = /api\/appointments\/(\d+)/.exec(url);
+    if (match) {
+      const appointmentId = match[1];
+      fixtures.appointments[appointmentId] = {
+        ...fixtures.appointments[appointmentId],
+        ...body,
+      };
+      updateSpotsRemaining();
+      return Promise.resolve({
+        status: 204,
+        statusText: "No Content",
       });
     }
   }),

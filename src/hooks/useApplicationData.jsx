@@ -97,7 +97,7 @@ export default function useApplicationData() {
         appointments: responses[1].data,
         interviewers: responses[2].data,
       });
-      console.log(responses);
+      // console.log(responses);
     });
   }, []);
 

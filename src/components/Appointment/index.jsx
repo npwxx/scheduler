@@ -29,6 +29,7 @@ function Appointment(props) {
     id,
     deleteInterview,
   } = props;
+  // console.log(props);
   const { mode, transition, back } = useVisualMode(interview ? SHOW : EMPTY);
 
   function save(name, interviewer) {
@@ -58,7 +59,7 @@ function Appointment(props) {
   }
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
