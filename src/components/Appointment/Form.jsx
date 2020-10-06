@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
@@ -13,14 +13,18 @@ export default function Form(props) {
       setError("Student name cannot be blank");
       return false;
     }
+    setError("");
     return true;
   };
+
+  // useEffect(validate, [name, interviewer]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // onSave();
   };
   const reset = () => {
+    setError("");
     setName(props.name || "");
     setInterviewer(props.interviewer || null);
   };
