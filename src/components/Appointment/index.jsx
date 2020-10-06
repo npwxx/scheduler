@@ -8,6 +8,7 @@ import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
+import PropTypes from "prop-types";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -19,7 +20,7 @@ const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
-export default function Appointment(props) {
+function Appointment(props) {
   const {
     time,
     interview,
@@ -98,3 +99,14 @@ export default function Appointment(props) {
     </article>
   );
 }
+
+Appointment.propTypes = {
+  time: PropTypes.string.isRequired,
+  interview: PropTypes.object,
+  interviewers: PropTypes.array,
+  bookInterview: PropTypes.func,
+  id: PropTypes.number,
+  deleteInterview: PropTypes.func,
+};
+
+export default Appointment;
