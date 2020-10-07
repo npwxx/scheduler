@@ -1,6 +1,7 @@
 export function getAppointmentsForDay(state, day) {
   const results = [];
   const dayObj = state.days.find((d) => d.name === day);
+
   if (!dayObj) {
     return [];
   }
@@ -23,6 +24,7 @@ export function getInterview(state, interview) {
 export function getInterviewersForDay(state, day) {
   const results = [];
   const dayObj = state.days.find((d) => d.name === day);
+
   if (!dayObj) {
     return [];
   }

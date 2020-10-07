@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
@@ -17,26 +17,27 @@ export default function Form(props) {
     return true;
   };
 
-  // useEffect(validate, [name, interviewer]);
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    // onSave();
   };
+
   const reset = () => {
     setError("");
     setName(props.name || "");
     setInterviewer(props.interviewer || null);
   };
+
   const cancel = () => {
     reset();
     onCancel();
   };
+
   const save = () => {
     if (validate()) {
       onSave(name, interviewer);
     }
   };
+
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">

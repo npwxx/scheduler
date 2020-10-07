@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import Axios from "axios";
 
 export default function useApplicationData() {
@@ -8,7 +8,6 @@ export default function useApplicationData() {
   const SET_DAYS = "SET_DAYS";
 
   const reducer = function (state, action) {
-    // console.log(state, action);
     const actionHandlers = {
       [SET_DAY]: () => {
         const { day } = action;
@@ -62,8 +61,6 @@ export default function useApplicationData() {
   };
 
   const bookInterview = function (id, interview) {
-    // console.log(id, interview);
-
     return Axios.put(`/api/appointments/${id}`, { interview })
       .then(() => {
         return Axios.get("/api/days");
@@ -97,7 +94,6 @@ export default function useApplicationData() {
         appointments: responses[1].data,
         interviewers: responses[2].data,
       });
-      // console.log(responses);
     });
   }, []);
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-// custom hooks
+// custom hook for handling state
 
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
@@ -13,7 +13,6 @@ export default function useVisualMode(initial) {
     }
   }
   function back() {
-    // console.log(history);
     if (history.length >= 2) {
       setMode(history[history.length - 2]);
       setHistory(history.slice(0, history.length - 1));
