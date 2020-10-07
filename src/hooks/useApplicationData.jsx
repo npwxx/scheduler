@@ -80,6 +80,7 @@ export default function useApplicationData() {
         return Axios.get("/api/days");
       })
       .then((response) => {
+        console.log(response);
         dispatch({ type: SET_INTERVIEW, id, interview: null });
         dispatch({ type: SET_DAYS, days: response.data });
       });
