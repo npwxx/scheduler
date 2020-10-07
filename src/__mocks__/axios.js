@@ -115,14 +115,13 @@ export default {
   delete: jest.fn((url) => {
     const match = /api\/appointments\/(\d+)/.exec(url);
     if (match) {
-      console.log(fixtures);
       const appointmentId = match[1];
       fixtures.appointments[appointmentId] = {
         ...fixtures.appointments[appointmentId],
         interview: null,
       };
       updateSpotsRemaining();
-      console.log(fixtures);
+
       return Promise.resolve({
         status: 204,
         statusText: "No Content",
