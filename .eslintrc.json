@@ -1,4 +1,10 @@
 {
   "extends": "react-app",
-  "parser": "babel-eslint"
+  "parser": "babel-eslint",
+  "overrides": [
+    {
+      "files": ["cypress/integration/*.spec.js"],
+      "extends": ["plugin:cypress/recommended"]
+    }
+  ]
 }
